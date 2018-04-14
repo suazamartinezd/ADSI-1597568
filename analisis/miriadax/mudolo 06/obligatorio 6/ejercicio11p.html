@@ -1,0 +1,340 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora modificada</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<style type="text/css">
+		body{
+			text-align: center;
+			background-color: pink;
+			color:blue;
+		}
+		p {
+			font-size: 1.8em;
+		}
+	</style>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#miMenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="10-index.html">MOOC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="miMenu">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="10-index.html">INICIO</a></li>
+        <li><a href="ejercicio_puzzle.html">PUZZLE</a></li>
+        <li><a href="#">Opción 3</a></li> 
+        <li><a href="#">Opción 4</a></li> 
+        <li><a href="#">Opción 5</a></li> 
+        <li><a href="ejercicio11p.html">Calculador</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+</div>
+
+<script type="text/javascript">
+
+
+
+    var fecha = new Date();
+    var time;
+
+    if      (fecha.getHours() < 7)  { time = "Buenas noches";}
+    else if (fecha.getHours() < 12) { time = "Buenos días";}
+    else if (fecha.getHours() < 21) { time = "Buenas tardes";}
+    else                                          { time = "Buenas noches";}
+
+// FUNCIONES EN JQUERY
+
+
+// FUNCION VACIAR
+	$(function(){
+		$("#clean").on("click",
+			function(){ 
+				$("#numero1").val(""); 
+				$("#numero2").val("");
+				$("#opunit").val("");
+				$("span#result").html("");
+			});
+		});
+
+// OPERACIONES DE UN NUMERO
+
+
+// ELEVAR AL CUADRADO
+	$(function(){
+		$("#cuadrado").on("click",
+			function(){ 
+			var num = $("#opunit");
+			$("span#result").html(num.val() * num.val());
+			});
+		});
+
+// INVERSO DEL NUMERO
+	$(function(){
+		$("#inverso").on("click",
+			function(){ 
+			var num = $("#opunit");
+			$("span#result").html( 1 / num.val());
+			});
+		});
+
+// RAIZ CUADRADA
+	$(function(){
+		$("#raiz").on("click",
+			function(){ 
+			var num = $("#opunit");
+			$("span#result").html(Math.sqrt(num.val()));
+			});
+		});
+
+// PARTE ENTERA
+	$(function(){
+		$("#parte_entera").on("click",
+			function(){ 
+			var num = $("#opunit");
+			if (num.val() > 0) {
+				$("span#result").html(Math.floor(num.val()));
+			} else {
+				$("span#result").html(-Math.ceil(num.val()));
+			}
+			});
+		});
+
+//OPERACIONES DE DOS NUMEROS
+
+// SUMA
+	$(function(){
+		$("#suma").on("click",
+			function(){ 
+			var num = $("#numero1");
+			var num2 = $("#numero2");
+			$("span#result").html(+num.val() + +num2.val());
+			});
+		});
+
+// RESTA
+	$(function(){
+		$("#resta").on("click",
+			function(){ 
+			var num = $("#numero1");
+			var num2 = $("#numero2");
+			$("span#result").html(+num.val() - +num2.val());
+			});
+		});
+
+// MULTIPLICACION
+	$(function(){
+		$("#mult").on("click",
+			function(){ 
+			var num = $("#numero1");
+			var num2 = $("#numero2");
+			$("span#result").html(+num.val() * +num2.val());
+			});
+		});
+
+// DIVISION
+	$(function(){
+		$("#division").on("click",
+			function(){ 
+			var num = $("#numero1");
+			var num2 = $("#numero2");
+			$("span#result").html(+num.val() / +num2.val());
+			});
+		});
+// ELEVAR POR UN NUMERO
+	$(function(){
+		$("#elevado").on("click",
+			function(){ 
+			var num = $("#numero1");
+			var num2 = $("#numero2");
+			$("span#result").html(Math.pow(num.val(),num2.val()));
+			});
+		});
+
+
+
+
+
+// ACUMULANDO
+ $(function(){
+	
+		$("#s1").on("click", 
+    	    function(){
+      	    var num = $("#opunit");
+      	    var aver = "prueba";
+     	    var acc = +acc + +num.val();
+     	    console.log(aver)
+     	   });
+	
+	
+	    $("#s2").on("click", 
+	        function() {
+	          var num = $("#opunit");
+	          if (acc === 0) {acc = 1};
+	          acc = +acc * +num.val();
+	       });
+	
+	
+		$("#sol").on("click", 
+			function() {
+	           	$("span#result").html(acc.val());
+	            acc = 0;
+	      });
+	
+ });
+
+
+// FUNCIONES EN JAVASCRIPT
+
+//    function vaciar() {
+//    	document.getElementById('numero1').value = "";
+//    	document.getElementById('numero2').value = "";
+//    	document.getElementById('result').innerHTML = '';
+//    }
+
+
+// OPERACIONES DE UN NUMERO
+
+//    function cuadrado() {
+//    	var num = document.getElementById('numero1');
+//    	num = num.value * num.value;
+//    	document.getElementById('result').innerHTML = num;
+//    }    
+//    function inverso() {
+//    	var num = document.getElementById('numero1');
+//    	num = 1/num.value;
+//    	document.getElementById('result').innerHTML = num;
+//    }       
+//    function raiz() {
+//    	var num = document.getElementById('numero1');
+//    	num = Math.sqrt(num.value);
+//    	document.getElementById('result').innerHTML = num;
+//    }      
+//    function parte_entera() {
+//    	var num = document.getElementById('numero1');
+//    	if (num.value > 0) {
+//    	num = Math.floor(num.value);
+//    	document.getElementById('result').innerHTML = num;}      
+//    else {
+//    	num = -Math.ceil(num.value);
+//    	document.getElementById('result').innerHTML = num;}
+//	  }
+//
+//    function suma() {
+//    	var a = document.getElementById('numero1').value;
+//    	var b = document.getElementById('numero2').value;
+//    	var c = Number(a) + Number(b);
+//    	document.getElementById('result').innerHTML = c;
+//    }
+//    function resta() {
+//    	var a = document.getElementById('numero1').value;
+//    	var b = document.getElementById('numero2').value;
+//    	var c = Number(a) - Number(b);
+//    	document.getElementById('result').innerHTML = c;
+//    }
+//    function mult() {
+//    	var a = document.getElementById('numero1').value;
+//    	var b = document.getElementById('numero2').value;
+//    	var c = Number(a) * Number(b);
+//    	document.getElementById('result').innerHTML = c;
+//    }
+//    function division() {
+//    	var a = document.getElementById('numero1').value;
+//    	var b = document.getElementById('numero2').value;
+//    	var c = Number(a) / Number(b);
+//    	document.getElementById('result').innerHTML = c;
+//    }
+//    function elevado() {
+//    	var a = document.getElementById('numero1').value;
+//    	var b = document.getElementById('numero2').value;
+//    	var c = Number(a) ** Number(b);
+//    	document.getElementById('result').innerHTML = c;
+//    }
+
+    </script>
+
+
+
+<h1 style="margin-top: 10%"><script type="text/javascript">
+
+
+var user = prompt('Indique su nombre, por favor:');
+while(user=='' || user == null) {window.alert('Por favor, inserte un nombre.');
+var user = prompt('Por favor, Indique su nombre:')}
+	document.write(time + ' ' + user);
+	window.alert('Bievenido ' + user + '.')
+
+	  
+
+	</script>, bienvenid@ a la calculadora de Diego Alejandro Suaza Martinez</h1>
+
+<div id="saludo"></div>
+<div style=" margin: 10%; text-align: center; border-radius: 30px; border: 3px solid black; background-color: green; color: black; margin-top: 1%" id="calculadora">
+
+<h2 style="text-align: left; font-family: arial; color: white; margin-left: 1em">Operaciones Binarias (con dos operandos).</h2>
+<p>Inserte las dos cifras a calcular <br>
+<input type="number" id="numero1" placeholder="Primer Numero">
+<input type="number" id="numero2" placeholder="Segundo Numero">
+</p>
+<p></p>
+<button id="suma">+</button>
+<button id="resta" >-</button>
+<button id="mult">x</button>
+<button id="division">%</button>
+<button id="elevado">^</button>
+<p></p>
+
+
+<hr>
+
+
+<br>
+<h2 style="text-align: left; font-family: arial; color: white; margin-left: 1em">Operaciones Unitarias (con un solo operando).</h2>
+<p>Inserte la cifra a calcular:<br>
+
+<input type="number" id="opunit" placeholder="Numero a calcular">
+
+<br>
+<button id="cuadrado">x<sup>2</sup></button>
+<button id="inverso">1/x</button>
+<button id="raiz">Raiz Cuadrada(x)</button>
+<button id="parte_entera">Parte Entera(x)</button>
+
+<br>
+
+
+<button id="s1">Σ</button>
+<button id="s2">Π</button>
+<h5>Preciona Σ o Π tras cada operando (Utiliza solo la casilla de primer numero) y al final '='</h5>
+
+  <button id="sol">=</button>
+
+
+
+<p></p>
+<button id="clean">Reiniciar todo</button>
+
+<h1>Resultado: <span id="result"></span></h1>
+
+<p>NOTA: La parte entera de un número negativo es el siguiente número a la izquierda de la recta numérica, por ejemplo; la parte entera de -3.2 es -4 y de -2.7 es -3, sin embargo, por motivos de evaluación se colocó el ejercicio tal como indicaba en las especificaciones. </p>
+</div>
+
+</body>
+</html>

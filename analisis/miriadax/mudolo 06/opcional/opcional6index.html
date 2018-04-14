@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Módulo 6 | Menu dropdown Bootstrap</title>
+		<!-- Bootstrap CSS -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+			body {
+				width: 100%;
+			}
+
+			header {
+				background-color: #9AFE2E;
+				color: white;
+				padding: 2rem;
+				border-radius: 5rem;
+			}
+
+			h1 {
+				font-size: 4.5rem;
+			}
+
+			.caret {
+				margin-left: 1rem;
+			}
+
+			#ejercicio {
+				color: #2E2E2E;
+				font-size: 2rem;
+				margin: 1rem auto;
+				text-align: justify;
+				width: 60%;
+
+		</style>
+	</head>
+	<body>
+	<div class="container">	
+
+		<header>
+			<h1 class="text-center">Menú Dropdown Bootstrap</h1>
+			<div id="ejercicio">
+				<p>Realizar un menú plegable (collapse) con una de sus opciones 'Music' desplegable (dropdown ) con bootstrap, para las siguientes opciones:</p>
+				<p>Welcome | Featured | People | Music | Mixes | Videos | Radio</p>
+			</div>			
+		</header>
+
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menubar">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			    </button>
+ 				<a class="navbar-brand" href="#">RubenTB2</a>    
+			</div>
+			<ul class="nav navbar-nav collapse navbar-collapse" id="menubar">
+				<li><a href="#home">Welcome</a></li>
+				<li><a href="#featured">Featured</a></li>
+				<li><a href="#people">People</a></li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Music<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Hard Rock</a></li>
+						<li><a href="#">Heavy</a></li>
+						<li><a href="#">Metal</a></li>
+						<li><a href="#">Death</a></li>
+						<li><a href="#">Doom</a></li>
+						<li><a href="#">Grind</a></li>
+						<li class="divider"><a href="#">Core</a></li>
+						<li><a href="#">Anything else?</a></li>
+					</ul>
+				</li>
+				<li><a href="#mixes">Mixes</a></li>
+				<li><a href="#videos">Videos</a></li>
+				<li><a href="#radio">Radio</a></li>
+			</ul>
+		</nav>
+
+
+	</div>
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"
+			  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+			  crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+ 		<script src="Hello World"></script>
+	</body>
+</html>

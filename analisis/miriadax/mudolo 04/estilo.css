@@ -1,0 +1,35 @@
+.calculadora{
+	display:block;
+	margin:0 auto;
+	padding:20px;
+	background-color: green;
+	background-image: url(paulo.jpg);
+	width:370px;
+	height:480px;
+	border-radius: 30px;
+}
+
+.calculadora td button{
+	display:block;
+	width:70px;
+	height:70px;
+	font-size:26px;
+}
+h1{
+	background-color: #ADFF2F;
+	width:500px ;
+	height:50px ;
+}
+
+#resultado{
+	display:block;
+	text-align:center;
+	font-size:40px;
+	margin-bottom:50px;
+	width:350px;
+	height:100px;
+	line-height:100px;
+	background-color:#fff;
+	border-radius: 26px;
+	overflow-y: scroll;
+}

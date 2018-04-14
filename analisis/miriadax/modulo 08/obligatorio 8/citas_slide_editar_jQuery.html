@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CITAS</title> 
+  <link rel="stylesheet" type="text/css" href="css/citas_slide.css" />
+  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+  <script type="text/javascript" src="javascript/galeria.js" ></script>
+  <script>
+  var t, actual, citas;
+
+  function select(i){
+    actual = i;
+    $("nav a")
+      .removeClass("on off")
+      .addClass(function(j){return(j===i)?"on":"off";});
+    $("#persona").html(citas[i].persona);
+    $("#frase").html(citas[i].frase);
+    $("#foto").attr("src", citas[i].foto);
+    clearTimeout(t);
+    t = setTimeout(function(){select((i + 1) % citas.length);}, 2000);
+  }
+
+  function generar_selector(){ // regenera la botonera
+    var selector = $("#selector");
+    selector.html("");
+    citas.forEach(function(elem,i) {
+      selector.append("<li><a onClick='select("+i+")'></a></li>");
+    });
+  }
+
+  $(function(){
+    localStorage.citas = (localStorage.citas || JSON.stringify(galeria));
+    citas = JSON.parse(localStorage.citas);
+
+    generar_selector();
+
+    $("#editar").on("click",function(){
+      clearTimeout(t);
+      $("#persona_d").html(citas[actual].persona);
+      $("#frase_d").html(citas[actual].frase);
+      $("#foto_d").html(citas[actual].foto);
+      $("#datos").css("display", "block");
+    });
+
+    $("#nuevo").on("click",function(){
+      $("#datos").css("display", "none");
+      actual = citas.push({
+          persona:$("#persona_d").html(),
+          frase:$("#frase_d").html(),
+          foto:$("#foto_d").html()
+      }) - 1;
+      generar_selector();
+      select(actual);
+      localStorage.citas = JSON.stringify(citas);
+    });
+
+    // Manejadores para el ejercicio: guardar cambios y borrar
+    $("#guardar").on("click",function(){
+      $("#datos").css("display", "none");
+      citas.splice(actual,1,{
+        persona:$("#persona_d").html(),
+          frase:$("#frase_d").html(),
+          foto:$("#foto_d").html()
+      });
+      select(actual);
+      localStorage.citas = JSON.stringify(citas);
+    });
+
+    $("#borrar").on("click",function(){
+      $("#datos").css("display", "none");
+      citas.splice(actual,1);
+      generar_selector();
+      if (actual!==0) actual -= 1;
+      select(actual);
+      localStorage.citas = JSON.stringify(citas);
+    });
+
+    $("#regenerar").on("click",function(){
+      if(confirm("La base de datos se va a regenerar y se perderán todos los cambios.\n¿Está seguro de que desea continuar?")){
+        localStorage.citas = JSON.stringify(galeria);
+        citas = JSON.parse(localStorage.citas);
+        generar_selector();
+        select(0);
+      }
+    });
+
+    select(0);
+  });
+</script>
+</head>
+
+<body>
+<div class="contenido">
+    <nav> 
+      <ul id="selector"></ul>
+    </nav>
+    <section id="caja">
+      <img id="foto" alt="" />
+      <div class="textos">
+          <p id="frase"></p>
+          <p id="persona"></p>
+      </div>
+    </section>
+    <div class="editar">
+      <div class="boton" id="regenerar">
+        <img src="images/recycling-white.svg" alt="Regenerar">
+      </div>
+      <div class="boton" id="editar"> 
+        <img src="images/carat-d-white.svg" alt="Edición"/>
+      </div>
+    </div>
+    <section id="datos">
+      <div contentEditable="true" id="persona_d"></div>
+      <div contentEditable="true" id="frase_d"></div>
+      <div contentEditable="true" id="foto_d"></div>
+      <div id="botones">
+          <ul>
+            <li><img src="images/edit-black.svg" alt="Modificar" id="guardar"/></li>
+            <li><img src="images/plus-black.svg" alt="Añadir" id="nuevo"/></li>
+            <li><img src="images/delete-black.svg" alt="Eliminar" id="borrar"/></li>
+          </ul>
+      </div>
+    </section>
+</div>
+</body>
+</html>
