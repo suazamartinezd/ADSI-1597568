@@ -1,0 +1,35 @@
+
+@font-face{
+    font-family: IndieFlower;
+    src: url(../font/IndieFlower.ttf);
+}
+
+.left{
+    background-color: azure;
+    border-style: solid;
+}
+
+.rigth{
+    background-color: azure;
+    border-style: solid;
+}
+
+
+.left, .rigth{
+    flex-grow: 1;
+    padding: 3rem;
+}
+body{
+    margin: px;
+    display: flex;
+    flex-direction:row; 
+    align-items: stretch;
+    height:90vh;
+    background-image: url(../img/nuve.jpg);
+    font-family: IndieFlower;
+}
+
+@media (max-width: 767.98px){
+    body{flex-direction: column;
+    }
+}
