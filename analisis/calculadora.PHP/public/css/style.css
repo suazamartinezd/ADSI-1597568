@@ -1,0 +1,30 @@
+
+body{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Anton', sans-serif;
+    height: 100vh;
+    background-color:yellowgreen;
+}
+    
+.diego{
+}
+@media (max-width: 655.98px) {
+    body{
+        flex-direction: column;
+        height: 100vh;
+        margin: 0.5%;
+    }
+}
+
+@media (max-width: 1199.98px) { 
+    body{ display: flex;
+          width: 500px;
+          height: 600px;
+
+    }}
+
+
+
